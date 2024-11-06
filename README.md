@@ -107,7 +107,17 @@ Untuk mengonfigurasi NAT di firewall, berikut langkah-langkahnya:
 
 Dengan konfigurasi NAT, perangkat dalam jaringan lokal dapat berkomunikasi dengan internet menggunakan satu alamat IP publik.
 
+___
+## **CASED** 
+## ANALISIS TOPOLOGI 
 
+Analisis dari topologi ini membahas cara ISP berperan sebagai pengganti IP publik dalam menghubungkan tiga lokasi berbeda yang masing-masing memiliki satu perangkat Mikrotik. Jaringan dikonfigurasi menggunakan tunnel untuk memastikan komunikasi aman antar-lokasi melalui jaringan internet dari ISP.
+
+Langkah pertama adalah mengatur konfigurasi dasar pada tiap perangkat Mikrotik di lokasi kampus KJ, kampus CR, dan kampus HI. Setiap Mikrotik diberikan IP lokal untuk jaringan internal serta IP publik dari ISP untuk akses internet. DHCP Server diaktifkan pada tiap perangkat Mikrotik agar perangkat dalam jaringan lokal dapat menerima IP secara otomatis, dan NAT juga diaktifkan agar perangkat tersebut dapat mengakses internet melalui IP publik.
+
+Kemudian, tunnel diatur di setiap Mikrotik dan diarahkan melalui ISP. Sebagai contoh, Mikrotik di lokasi kampus KJ membuat tunnel ke ISP, dan hal yang sama diterapkan di lokasi kampus CR dan kampus HI. Hal ini memungkinkan data untuk mengalir secara langsung antara lokasi-lokasi tersebut, karena titik akhir tunnel terhubung ke IP publik ISP.
+
+Setiap Mikrotik juga dikonfigurasi dengan routing statis untuk memastikan lalu lintas dapat mengalir ke lokasi lain. Dengan demikian, perangkat di lokasi kampus KJ, kampus CR, dan kampus HI bisa saling berkomunikasi. Dalam hal ini, ISP menyediakan IP publik, sedangkan tunnel dan enkripsi menjaga agar komunikasi antar-lokasi tetap efisien dan aman.
 
 
 
